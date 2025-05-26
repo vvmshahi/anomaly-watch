@@ -23,7 +23,7 @@ export const SensitivitySlider = ({ value, onChange }: SensitivitySliderProps) =
         />
         <span className="text-xs text-gray-500">Low</span>
       </div>
-      <span className="text-sm text-gray-600 font-mono">|z| > {value}</span>
+      <span className="text-sm text-gray-600 font-mono">|z| &gt; {value}</span>
     </div>
   );
 };
