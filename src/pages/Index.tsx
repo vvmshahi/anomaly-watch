@@ -181,7 +181,7 @@ const Index = () => {
               </div>
               <span className="text-lg font-semibold text-slate-800">Anomaly Watch</span>
             </div>
-            <p className="text-slate-600 mb-4">Built with ❤️ by Your Name · Detect what matters</p>
+            <p className="text-slate-600 mb-4">Built with ❤️ by Shahin · Detect what matters</p>
             <div className="flex justify-center space-x-6 text-sm">
               <a href="#" className="text-slate-500 hover:text-blue-600 transition-colors font-medium">GitHub</a>
               <a href="#" className="text-slate-500 hover:text-blue-600 transition-colors font-medium">LinkedIn</a>
