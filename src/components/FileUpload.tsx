@@ -1,6 +1,6 @@
 
 import { useRef } from "react";
-import { Upload } from "lucide-react";
+import { Upload, FileSpreadsheet } from "lucide-react";
 
 interface FileUploadProps {
   onUpload: (file: File) => void;
@@ -33,32 +33,61 @@ export const FileUpload = ({ onUpload }: FileUploadProps) => {
   };
 
   return (
-    <div className="text-center">
-      <h2 className="text-2xl font-semibold mb-6">Upload Time Series Data</h2>
+    <div className="text-center max-w-4xl mx-auto">
+      <div className="flex items-center justify-center space-x-3 mb-8">
+        <div className="h-12 w-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
+          <FileSpreadsheet className="h-6 w-6 text-white" />
+        </div>
+        <h2 className="text-3xl font-bold text-slate-800">Upload Your Time Series Data</h2>
+      </div>
+      
+      <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
+        Transform your raw data into actionable insights. Our intelligent system will automatically detect patterns, anomalies, and trends in your time series.
+      </p>
       
       <div
         onDrop={handleDrop}
         onDragOver={handleDragOver}
-        className="border-2 border-dashed border-gray-300 rounded-lg p-12 hover:border-gray-400 transition-colors cursor-pointer"
+        className="relative border-2 border-dashed border-blue-300 hover:border-blue-400 rounded-2xl p-12 hover:bg-blue-50/50 transition-all duration-300 cursor-pointer group"
         onClick={() => fileInputRef.current?.click()}
       >
-        <Upload className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-        <p className="text-lg font-medium text-gray-900 mb-2">Upload your CSV file</p>
-        <p className="text-gray-600 mb-4">
-          Upload a time series CSV with a datetime column and a numeric value column
-        </p>
-        <div className="bg-gray-50 rounded-md p-4 text-sm text-left max-w-md mx-auto">
-          <p className="font-medium mb-2">Expected format:</p>
-          <div className="font-mono text-xs">
-            <div>date,value</div>
-            <div>2023-01-01,100.5</div>
-            <div>2023-01-02,102.1</div>
-            <div>2023-01-03,98.7</div>
+        <div className="space-y-6">
+          <div className="flex justify-center">
+            <div className="h-20 w-20 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <Upload className="h-10 w-10 text-blue-600" />
+            </div>
           </div>
+          
+          <div className="space-y-3">
+            <h3 className="text-xl font-semibold text-slate-800">
+              Drop your CSV file here or click to browse
+            </h3>
+            <p className="text-slate-600">
+              Supports CSV files with datetime and numeric columns
+            </p>
+          </div>
+
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 text-left max-w-lg mx-auto border border-blue-200">
+            <div className="flex items-center space-x-2 mb-3">
+              <div className="h-5 w-5 bg-blue-500 rounded-full flex items-center justify-center">
+                <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <p className="font-semibold text-slate-800">Expected Format:</p>
+            </div>
+            <div className="font-mono text-sm text-slate-700 space-y-1 bg-white rounded-lg p-4 border">
+              <div className="text-blue-600 font-medium">date,temperature,humidity,pressure</div>
+              <div>2023-01-01,23.5,65.2,1013.2</div>
+              <div>2023-01-02,24.1,67.8,1012.8</div>
+              <div>2023-01-03,22.9,64.5,1014.1</div>
+            </div>
+          </div>
+
+          <button className="mt-6 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
+            Select Your Dataset
+          </button>
         </div>
-        <button className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
-          Choose File
-        </button>
       </div>
 
       <input
@@ -68,6 +97,21 @@ export const FileUpload = ({ onUpload }: FileUploadProps) => {
         onChange={handleFileChange}
         className="hidden"
       />
+      
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-slate-600">
+        <div className="flex items-center space-x-2">
+          <div className="h-2 w-2 bg-green-500 rounded-full"></div>
+          <span>Automatic column detection</span>
+        </div>
+        <div className="flex items-center space-x-2">
+          <div className="h-2 w-2 bg-blue-500 rounded-full"></div>
+          <span>Smart anomaly detection</span>
+        </div>
+        <div className="flex items-center space-x-2">
+          <div className="h-2 w-2 bg-purple-500 rounded-full"></div>
+          <span>Interactive visualizations</span>
+        </div>
+      </div>
     </div>
   );
 };
