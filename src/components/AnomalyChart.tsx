@@ -30,7 +30,7 @@ export const AnomalyChart = ({ data }: AnomalyChartProps) => {
       if (payload.isAnomaly) {
         return [
           `${value.toFixed(2)}`,
-          `${payload.anomalyType === 'spike' ? 'Spike' : 'Dip'} (z=${payload.zScore.toFixed(2)})`
+          `${payload.anomalyType === 'spike' ? '🔺 Spike' : '🔻 Dip'} (z=${payload.zScore.toFixed(2)})`
         ];
       }
       return [`${value.toFixed(2)}`, 'Value'];
@@ -40,59 +40,69 @@ export const AnomalyChart = ({ data }: AnomalyChartProps) => {
 
   return (
     <div>
-      <h3 className="text-lg font-semibold mb-4">Time Series with Anomalies</h3>
       <div className="h-96">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={chartData}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" opacity={0.7} />
             <XAxis 
               dataKey="date" 
-              stroke="#666"
+              stroke="#6b7280"
               fontSize={12}
+              fontWeight={500}
               tickFormatter={(value) => {
                 const date = new Date(value);
                 return date.toLocaleDateString();
               }}
             />
-            <YAxis stroke="#666" fontSize={12} />
+            <YAxis 
+              stroke="#6b7280" 
+              fontSize={12} 
+              fontWeight={500}
+            />
             <Tooltip 
               formatter={formatTooltip}
-              labelFormatter={(value) => `Date: ${new Date(value).toLocaleDateString()}`}
+              labelFormatter={(value) => `📅 Date: ${new Date(value).toLocaleDateString()}`}
               contentStyle={{
                 backgroundColor: 'white',
-                border: '1px solid #ddd',
-                borderRadius: '6px',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                border: '1px solid #e5e7eb',
+                borderRadius: '12px',
+                boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+                fontSize: '14px',
+                fontWeight: '500'
               }}
             />
             <Line
               type="monotone"
               dataKey="value"
-              stroke="#2563eb"
-              strokeWidth={2}
+              stroke="#F97316"
+              strokeWidth={3}
               dot={false}
-              activeDot={{ r: 4, fill: '#2563eb' }}
+              activeDot={{ r: 6, fill: '#F97316', stroke: 'white', strokeWidth: 2 }}
             />
             {anomalies.map((anomaly, index) => (
               <Scatter
                 key={index}
                 data={[anomaly]}
-                fill={anomaly.anomalyType === 'spike' ? '#ef4444' : '#dc2626'}
+                fill={anomaly.anomalyType === 'spike' ? '#DC2626' : '#7C2D12'}
               />
             ))}
           </LineChart>
         </ResponsiveContainer>
       </div>
       
-      {/* Anomaly markers overlay */}
-      <div className="mt-4 flex items-center space-x-6 text-sm">
+      {/* Enhanced Legend */}
+      <div className="mt-6 flex items-center justify-center space-x-8 text-sm bg-gray-50 rounded-xl p-4">
         <div className="flex items-center space-x-2">
-          <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
-          <span>Normal Values</span>
+          <div className="w-4 h-4 bg-orange-500 rounded-full shadow-sm"></div>
+          <span className="font-medium text-gray-700">Normal Values</span>
         </div>
         <div className="flex items-center space-x-2">
-          <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-          <span>Anomalies</span>
+          <div className="w-4 h-4 bg-red-600 rounded-full shadow-sm"></div>
+          <span className="font-medium text-gray-700">Spike Anomalies</span>
+        </div>
+        <div className="flex items-center space-x-2">
+          <div className="w-4 h-4 bg-red-900 rounded-full shadow-sm"></div>
+          <span className="font-medium text-gray-700">Dip Anomalies</span>
         </div>
       </div>
     </div>
