@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { FileUpload } from "@/components/FileUpload";
 import { AnomalyChart } from "@/components/AnomalyChart";
@@ -64,9 +65,9 @@ const Index = () => {
             </div>
             <nav className="hidden md:flex items-center space-x-8">
               <a href="#" className="text-gray-700 hover:text-orange-500 font-medium transition-colors duration-200">Home</a>
-              <a href="#" className="text-gray-700 hover:text-orange-500 font-medium transition-colors duration-200">About</a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-orange-500 font-medium transition-colors duration-200">GitHub</a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-orange-500 font-medium transition-colors duration-200">LinkedIn</a>
+              <a href="http://www.shahin.studio/" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-orange-500 font-medium transition-colors duration-200">Contact</a>
+              <a href="https://github.com/vvmshahi" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-orange-500 font-medium transition-colors duration-200">GitHub</a>
+              <a href="http://www.linkedin.com/in/vvmshahin" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-orange-500 font-medium transition-colors duration-200">LinkedIn</a>
             </nav>
           </div>
         </div>
@@ -253,11 +254,19 @@ const Index = () => {
               <span className="text-xl font-bold text-gray-900">Anomaly Watch</span>
             </div>
             <p className="text-gray-600 mb-6 text-lg">
-              Part of the AI Intelligence Suite · Built with AI ❤️ by Shahin
+              Part of the AI Intelligence Suite · Created with ❤️ by{' '}
+              <a 
+                href="http://www.shahin.studio/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-orange-500 hover:text-orange-600 transition-colors font-medium hover:underline"
+              >
+                Shahin
+              </a>
             </p>
             <div className="flex justify-center space-x-8 text-sm">
               <a 
-                href="https://github.com" 
+                href="https://github.com/vvmshahi" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-gray-500 hover:text-orange-500 transition-colors font-medium hover:underline"
@@ -265,14 +274,13 @@ const Index = () => {
                 GitHub
               </a>
               <a 
-                href="https://linkedin.com" 
+                href="http://www.linkedin.com/in/vvmshahin" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-gray-500 hover:text-orange-500 transition-colors font-medium hover:underline"
               >
                 LinkedIn
               </a>
-              <a href="#" className="text-gray-500 hover:text-orange-500 transition-colors font-medium hover:underline">Documentation</a>
             </div>
           </div>
         </div>
