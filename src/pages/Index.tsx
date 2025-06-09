@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { FileUpload } from "@/components/FileUpload";
 import { AnomalyChart } from "@/components/AnomalyChart";
@@ -6,6 +5,7 @@ import { InsightsSummary } from "@/components/InsightsSummary";
 import { ColumnSelector } from "@/components/ColumnSelector";
 import { SensitivitySlider } from "@/components/SensitivitySlider";
 import { parseCSV, detectAnomalies } from "@/utils/dataProcessing";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 interface DataPoint {
   date: Date;
@@ -65,9 +65,21 @@ const Index = () => {
             </div>
             <nav className="hidden md:flex items-center space-x-8">
               <a href="#" className="text-gray-700 hover:text-orange-500 font-medium transition-colors duration-200">Home</a>
-              <a href="http://www.shahin.studio/" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-orange-500 font-medium transition-colors duration-200">Contact</a>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button className="text-gray-700 hover:text-orange-500 font-medium transition-colors duration-200">About</button>
+                </DialogTrigger>
+                <DialogContent className="max-w-md">
+                  <DialogHeader>
+                    <DialogTitle>About DataPulse</DialogTitle>
+                  </DialogHeader>
+                  <p className="text-gray-600 leading-relaxed">
+                    DataPulse is designed to make data exploration fast, intelligent, and accessible. Upload your CSVs and watch as AI instantly breaks down patterns, distributions, and key correlations — no coding required. With built-in visualizations and GPT-powered insights, DataPulse helps analysts and business teams make smarter decisions, faster.
+                  </p>
+                </DialogContent>
+              </Dialog>
               <a href="https://github.com/vvmshahi" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-orange-500 font-medium transition-colors duration-200">GitHub</a>
-              <a href="http://www.linkedin.com/in/vvmshahin" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-orange-500 font-medium transition-colors duration-200">LinkedIn</a>
+              <a href="https://www.linkedin.com/in/vvmshahin" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-orange-500 font-medium transition-colors duration-200">LinkedIn</a>
             </nav>
           </div>
         </div>
@@ -256,7 +268,7 @@ const Index = () => {
             <p className="text-gray-600 mb-6 text-lg">
               Part of the AI Intelligence Suite · Created with ❤️ by{' '}
               <a 
-                href="http://www.shahin.studio/" 
+                href="https://www.shahin.studio/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-orange-500 hover:text-orange-600 transition-colors font-medium hover:underline"
@@ -274,7 +286,7 @@ const Index = () => {
                 GitHub
               </a>
               <a 
-                href="http://www.linkedin.com/in/vvmshahin" 
+                href="https://www.linkedin.com/in/vvmshahin" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-gray-500 hover:text-orange-500 transition-colors font-medium hover:underline"
